@@ -31,17 +31,33 @@ class linked_list:
             elems.append(cur_node.data) #on ajoute avec la fonction append, la data du noeud courrant
         print(elems)
 
-    def get(self, index):
+    def get(self, index): #getter
         if index>=self.length():
             print("ERROR : Index out of range ")
             return None
         cur_indx = 0
         cur_node = self.head
         while True:
+            
             cur_node=cur_node.next
-            if cur_indx==index: 
-                return cur_node.data
+            if cur_indx==index:
+                print(cur_node.data)
+                return
             cur_indx+=1
+
+    def erase(self,index):
+        if index>=self.length():
+            print("ERROR : 'Erase' index out of range")
+            return
+        cur_index = 0
+        cur_node = self.head
+        while True:
+            last_node = cur_node #on raccorde le dernier avec le prochain noeud
+            cur_node = cur_node.next
+            if cur_index==index: 
+                last_node.next = cur_node.next
+                return
+            cur_index+=1
 
 my_list = linked_list()
 
@@ -50,7 +66,14 @@ my_list.append(2)
 my_list.append(19)
 my_list.append(7)
 
+print("My linked list :")
+my_list.display()
+
 print("the element at the index 2 : ")
 my_list.get(2)
+
+my_list.display()
+
+my_list.erase(2)
 
 my_list.display()
