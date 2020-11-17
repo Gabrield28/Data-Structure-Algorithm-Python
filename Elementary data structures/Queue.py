@@ -1,3 +1,4 @@
+import sys
 class Queue:
     def __init__(self):
         self.items = []
@@ -11,6 +12,7 @@ class Queue:
     def dequeue(self):
         if len(self.items) == 0:
             print("ERROR : la file est vide !")
+            sys.exit()
         else:
             print("Element retire de la file : ")
             print(self.items[0])
@@ -34,7 +36,6 @@ class Queue:
     
 
 myQueue = Queue()
-myQueue.dequeue()
 myQueue.enqueue(3)
 myQueue.enqueue(6)
 myQueue.enqueue(38)
